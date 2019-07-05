@@ -7,12 +7,5 @@ resource "aws_cloudformation_stack" "this" {
     URLId = "{var.id}"
   }
 
-  tags = {
-    "eo:ops:application" = "cloudsploit"
-    "eo:ops:environment" = "prod"
-    "eo:user:contact"    = "infosec@upwork.com"
-    "eo:user:department" = "infosec"
-    "eo:user:team"       = "scrum-information-security"
-    "ep:ops:creator"     = "christopherbischoff"
-  }
+  tags = "${merge(var.tags, map("Creator", "terraform"))}"
 }
